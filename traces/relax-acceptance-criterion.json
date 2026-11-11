@@ -1,0 +1,104 @@
+{
+ "question": "An applicant wants to relax an acceptance criterion in the approved specification of a drug product. Which kind of supplement applies?",
+ "document": "21-cfr-part-314.md",
+ "document_chars": 414661,
+ "document_sections": 97,
+ "hits_for_phrase": {
+  "total": 1,
+  "in_section_314_70": 1,
+  "sections": [
+   "§ 314.70 Supplements and other changes to an approved NDA."
+  ]
+ },
+ "walk": {
+  "steps": [
+   {
+    "step": "find",
+    "command": "find DOC \"acceptance criterion\" --ignore-case",
+    "result_chars": 468,
+    "document_chars_read": 0,
+    "summary": {
+     "total": 1,
+     "shown": 1
+    }
+   },
+   {
+    "step": "read",
+    "command": "read DOC --line 1067 --max-chars 20000",
+    "result_chars": 17492,
+    "document_chars_read": 16987,
+    "summary": {
+     "char_start": 136985,
+     "char_end": 153972,
+     "line_start": 977,
+     "line_end": 1145,
+     "page_start": 1,
+     "page_end": 1,
+     "path": "PART 314—APPLICATIONS FOR FDA APPROVAL TO MARKET A NEW DRUG > Subpart B—Applications > § 314.70 Supplements and other changes to an approved NDA.",
+     "est_tokens": 4247,
+     "truncated": false,
+     "next": null
+    }
+   }
+  ],
+  "total_result_chars": 17960,
+  "share_of_document": 0.04096599390827688,
+  "read_span": {
+   "char_start": 136985,
+   "char_end": 153972,
+   "line_start": 977,
+   "line_end": 1145,
+   "path": "PART 314—APPLICATIONS FOR FDA APPROVAL TO MARKET A NEW DRUG > Subpart B—Applications > § 314.70 Supplements and other changes to an approved NDA.",
+   "truncated": false
+  },
+  "holds": {
+   "major-changes heading": true,
+   "rule: specification changes": true,
+   "moderate-changes heading": true,
+   "exception: compendium": true
+  }
+ },
+ "baseline_bm25_chunks": {
+  "chunk_chars": 1200,
+  "chunks_in_document": 417,
+  "runs": [
+   {
+    "budget_chars": 17960,
+    "chunks": 17,
+    "chars": 17893,
+    "holds": {
+     "major-changes heading": false,
+     "rule: specification changes": false,
+     "moderate-changes heading": false,
+     "exception: compendium": true
+    },
+    "from_section_314_70": 4
+   },
+   {
+    "budget_chars": 35920,
+    "chunks": 33,
+    "chars": 35430,
+    "holds": {
+     "major-changes heading": false,
+     "rule: specification changes": false,
+     "moderate-changes heading": true,
+     "exception: compendium": true
+    },
+    "from_section_314_70": 6
+   },
+   {
+    "budget_chars": 71840,
+    "chunks": 65,
+    "chars": 70960,
+    "holds": {
+     "major-changes heading": true,
+     "rule: specification changes": true,
+     "moderate-changes heading": true,
+     "exception: compendium": true
+    },
+    "from_section_314_70": 9
+   }
+  ]
+ },
+ "limits": "one question, one document, one lexical baseline; token counts not measured; no model in the loop"
+}
