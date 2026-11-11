@@ -73,6 +73,14 @@ Reproduce: `python3 bench/trace_case.py` writes [the full trace](traces/relax-ac
 - Sizes are characters. Token estimates are characters divided by 4.
 - The outline was not needed. For this document the full outline costs 41,738 characters, more than the section itself. `--depth 2` gives ten rows. Find first; outline when find fails.
 
+## A second measurement: what to add after a hit
+
+A separate experiment on 400 Natural Questions documents compared nine rules for adding text around a first hit, at limits from 2,000 to 64,000 tokens. [Summary and limits](bench/natural-questions-context-expansion.md).
+
+- No rule wins at every limit. On the 38 large documents, a mixed parent-and-heading rule is 0.062 below plain BM25 fill at 4,000 tokens and 0.062 above it at 8,000.
+- The first hit decides most of it. Reading the heading section around a BM25 hit scores 0.295 at 2,000 tokens. Around a hit that the gold label picked, it scores 0.952.
+- It measures how much gold evidence the context keeps. It does not measure answers, and it does not test the agent walk above.
+
 ## The method
 
 1. **Locate.** Search the full text for an exact string from the question or from a fragment that search returned: a code, an article number, a defined term. Every hit reports its section path.
@@ -118,8 +126,9 @@ The tests cover section nesting, exact offsets, budget cuts and their cursor, pa
 |---|---|
 | Offline tool and tests | In this repository |
 | One real trace on a public regulation | In this repository, reproducible |
-| Ablation on a public question-answering set with evidence labels | Run elsewhere; not included until its files are reviewed and added here |
-| Long-document benchmark with stronger baselines (hybrid search, parent and neighbour expansion, tree and graph indexes) | Not done |
+| Context expansion after a hit, 400 Natural Questions documents, 9 rules, 6 token limits | [Summary](bench/natural-questions-context-expansion.md) in this repository; code and row-level results not included. Results are mixed and measure evidence retention, not answers |
+| LightRAG, PageIndex, Jev, OpenAI Decisions API | Not run. Listed as future comparisons only |
+| Long-document benchmark with stronger baselines (hybrid search, reranking, tree and graph indexes) | Not done |
 | A model choosing the phrase, the section and the stop point | Not done |
 
 Nothing in this repository is a claim about a product or a customer.
