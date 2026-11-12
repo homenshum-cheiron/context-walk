@@ -81,6 +81,10 @@ A separate experiment on 400 Natural Questions documents compared nine rules for
 - The first hit decides most of it. Reading the heading section around a BM25 hit scores 0.295 at 2,000 tokens. Around a hit that the gold label picked, it scores 0.952.
 - It measures how much gold evidence the context keeps. It does not measure answers, and it does not test the agent walk above.
 
+## Linked memory notes
+
+`linkmem.py` applies the same idea to an agent's own memory: notes that point back to their evidence, an edit check, views rebuilt by code, and a read path that moves from an old note to the one that replaced it. See [linked-memory.md](linked-memory.md). A first pre-registered comparison on a private set did not meet its bar; the page says what it does and does not show.
+
 ## The method
 
 1. **Locate.** Search the full text for an exact string from the question or from a fragment that search returned: a code, an article number, a defined term. Every hit reports its section path.
@@ -116,6 +120,7 @@ python3 docwalk.py read FILE --chars 136985:153972 --max-chars 8000
 ```sh
 python3 -m unittest discover -s tests -v
 python3 bench/trace_case.py
+python3 linkmem.py validate examples/linked-memory
 ```
 
 The tests cover section nesting, exact offsets, budget cuts and their cursor, page and line ranges, files without headings, non-ASCII text, refused requests, and the real regulation case above.
@@ -130,6 +135,8 @@ The tests cover section nesting, exact offsets, budget cuts and their cursor, pa
 | LightRAG, PageIndex, Jev, OpenAI Decisions API | Not run. Listed as future comparisons only |
 | Long-document benchmark with stronger baselines (hybrid search, reranking, tree and graph indexes) | Not done |
 | A model choosing the phrase, the section and the stop point | Not done |
+| Linked memory notes: offline validator, views and read path, synthetic example, tests | In this repository ([linked-memory.md](linked-memory.md)) |
+| Linked memory vs a flat fact list, 16 private questions, pre-registered | Bar not met; aggregate only, data not included |
 
 Nothing in this repository is a claim about a product or a customer.
 
