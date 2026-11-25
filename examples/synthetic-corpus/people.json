@@ -1,0 +1,13 @@
+{
+  "owner": "Alice",
+  "people": {
+    "user_alice": "Alice",
+    "user_blair": "Blair",
+    "user_chen": "Chen",
+    "user_dana": "Dana"
+  },
+  "channels": {
+    "chan_eng": "#engineering"
+  },
+  "derived_prefixes": ["derived/"]
+}

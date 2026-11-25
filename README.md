@@ -111,6 +111,20 @@ python3 docwalk.py read FILE --chars 136985:153972 --max-chars 8000
 - Pages are split on the form feed character. The tool does not convert PDF, HTML or scans; convert first.
 - Exit code 0 is a result. Exit code 2 is a refused request, with the reason on standard error.
 
+## Hybrid corpus retrieval
+
+The same locate-then-read idea, applied to a folder of meeting notes, transcripts, and chat instead of one long document.
+
+`memwalk.py` builds a SQLite FTS5 index of small leaves and slightly larger windows. Every leaf stores a locator into the raw file. Search fuses the two rankings, ranks a primary source above a later digest, and then reads the hit plus one neighbour in the same parent, up to a character budget. Optional lanes handle speaker questions, direct messages, Hangul, and a meaning fallback. `refresh.py` writes the raw folder append-only. `action_items.py` turns new `* [ ]` lines into cited drafts and sends nothing.
+
+```sh
+python3 memwalk.py build --raw examples/synthetic-corpus --db /tmp/memwalk.db --embed
+python3 memwalk.py retrieve "What did Alice say about the vendor?" --raw examples/synthetic-corpus --db /tmp/memwalk.db --embed
+python3 action_items.py new --raw examples/synthetic-corpus --db /tmp/memwalk.db --state /tmp/refresh-state.json
+```
+
+The [synthetic corpus](examples/synthetic-corpus/README.md) is invented. The [method note](docs/hybrid-retrieval.md) records the tree, the walk, incremental refresh, and the frozen-holdout loop used to test changes. No private or customer text is in this repository.
+
 ## Checks
 
 ```sh
@@ -118,7 +132,7 @@ python3 -m unittest discover -s tests -v
 python3 bench/trace_case.py
 ```
 
-The tests cover section nesting, exact offsets, budget cuts and their cursor, page and line ranges, files without headings, non-ASCII text, refused requests, and the real regulation case above.
+The tests cover section nesting, exact offsets, budget cuts and their cursor, page and line ranges, files without headings, non-ASCII text, refused requests, and the real regulation case above. They also cover the hybrid index on the synthetic corpus: locator round-trips, incremental ingest, append-only chat writes, speaker and Hangul lanes, derived-copy ranking, and action-item locators.
 
 ## Status of the research
 
@@ -130,12 +144,16 @@ The tests cover section nesting, exact offsets, budget cuts and their cursor, pa
 | LightRAG, PageIndex, Jev, OpenAI Decisions API | Not run. Listed as future comparisons only |
 | Long-document benchmark with stronger baselines (hybrid search, reranking, tree and graph indexes) | Not done |
 | A model choosing the phrase, the section and the stop point | Not done |
+| Hybrid corpus index (FTS leaves and windows, locators, context walk, speaker / DM / Hangul lanes, append-only refresh) | In this repository, tested on a synthetic corpus only |
+| Frozen-holdout scores from a private meeting corpus | Not published |
 
 Nothing in this repository is a claim about a product or a customer.
 
 ## Related
 
 The method is also packaged as a skill, `walk-the-document`, in [agent-skills](https://github.com/homenshum-cheiron/agent-skills).
+
+The corpus method is accompanied in that same skills repository by `transcript-capture`, `meeting-action-drafts`, and `frozen-holdout-eval`.
 
 ## License
 
