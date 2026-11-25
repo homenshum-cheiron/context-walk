@@ -1,0 +1,7 @@
+# Meeting transcript planning-2026-03-02 (notes file planning-2026-03-02)
+[2026-03-02 10:00:00 PT] Alice: Welcome. The first topic is the river toolkit ship date.
+[2026-03-02 10:01:12 PT] Alice: I worry about vendor lock-in if we have no exit clause.
+[2026-03-02 10:02:05 PT] Blair: That is fair. I will update the launch checklist this afternoon.
+[2026-03-02 10:03:40 PT] Chen: 출시는 3월 10일로 옮깁니다. 조항을 검토할 시간을 확보하려고요.
+[2026-03-02 10:04:10 PT] Dana: I can review the clause tomorrow morning.
+[2026-03-02 10:05:00 PT] Alice: Great. Let's treat 10 March as the new date.

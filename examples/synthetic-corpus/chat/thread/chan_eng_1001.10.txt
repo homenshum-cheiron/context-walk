@@ -1,0 +1,20 @@
+=== THREAD PARENT MESSAGE ===
+From: Alice
+Channel: #engineering
+Time: 2026-03-02 11:10:00
+Message TS: 1001.10
+> [The planning huddle just ended. Launch date is 10 March.]
+
+--- Reply 1 of 2 ---
+From: Blair
+Time: 2026-03-02 11:12:00
+Message TS: 1001.12
+
+Checklist update is on my plate. I will post it before evening.
+
+--- Reply 2 of 2 ---
+From: Chen
+Time: 2026-03-02 11:15:00
+Message TS: 1001.15
+
+문서 목록에도 새 날짜를 보내겠습니다.

@@ -1,0 +1,6 @@
+{"id":"s01","q":"When is the launch date?","must":["10 March"],"file":"transcript/planning-2026-03-02.txt"}
+{"id":"s02","q":"What did Alice say about the vendor?","must":["vendor lock-in"],"file":"transcript/planning-2026-03-02.txt"}
+{"id":"s03","q":"What is on Blair's action list?","must":["launch checklist"],"file":"notes/planning-2026-03-02.md"}
+{"id":"s04","q":"What did Blair promise in the DM?","must":["rollback test"],"file":"chat/dm/user_blair_blair.txt"}
+{"id":"s05","q":"출시 날짜는 언제인가요?","must":["3월 10일"],"file":"transcript/planning-2026-03-02.txt"}
+{"id":"s06","q":"Who is sending the revised date to the docs list?","must":["Chen"],"file":"notes/planning-2026-03-02.md"}
